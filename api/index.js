@@ -17,12 +17,22 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
+//este es el index principal dinde see lllama la aplicacion
+const server = require("./src/app.js"); //aplicaicon
+const { conn } = require("./src/db.js"); //dabase
 
-// Syncing all the models at once.
+// Syncing all the models at once.c
+//forma1--
 conn.sync({ force: true }).then(() => {
   server.listen(3001, () => {
-    console.log('%s listening at 3001'); // eslint-disable-line no-console
+    console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
 });
+//---fin forma 1
+// // Syncing all the models at once.c
+// //forma 2--
+// server.listen(3001, () => {
+//   console.log("%s listening at 3001"); // eslint-disable-line no-console
+//   conn.sync({ force: true });
+// });
+// //---fin forma 2------------------------------
