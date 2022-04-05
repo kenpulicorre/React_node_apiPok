@@ -1,7 +1,7 @@
 .landing {
   background-image: url("../images/landing.jpg");
   background-size: cover;
-  height: 50vh;
+  height: 100vh;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;

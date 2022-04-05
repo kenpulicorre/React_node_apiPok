@@ -1,0 +1,49 @@
+.ordenar {
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+  background-color: #090909bf;
+}
+
+.ordenarul {
+  display: flex;
+  color: white;
+  justify-content: space-evenly;
+  /* margin-right: 500px; */
+  /* margin-left: 50px; */
+  /* padding-right: 200px; */
+  /* padding-left: 200px; */
+
+  /* display: inline-block; */
+  /* color: white; */
+  background-color: #8a0000;
+  padding: 50px;
+  border-radius: 5px;
+  margin: 20px;
+}
+
+.navPag {
+  background-color: #090909bf;
+  position: sticky;
+  top: 80px;
+}
+.olPag {
+  display: inline-block;
+  color: white;
+  background-color: #8a0000;
+  padding: 15px;
+  border-radius: 5px;
+  margin: 4px;
+  cursor: pointer;
+}
+
+.olPag2 {
+  background-color: #090909bf;
+}
+
+.ulPag {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+}

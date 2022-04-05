@@ -20,6 +20,9 @@ function rootReducer(state = initialState, action) {
         ...state,
         todosPokemons: action.payload,
       };
+    default:
+      return state;
+
     //----2
     //----3
     //----4
