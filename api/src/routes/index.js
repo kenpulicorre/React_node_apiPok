@@ -53,28 +53,51 @@ const getApiInfoPokemon = async () => {
       var res = apiInfoT[n2].concat(apiInfoT[n2 + 1]);
       n2++;
     }
-    //llamando datos de pokemons-------
-    const apiInfoPoke = await res.map(async (d) => await axios.get(d.url));
-    let apiInfoPokemonTotals = await Promise.all(apiInfoPoke).then((data) => {
-      let pokeInfo = data.map((el) => {
-        return {
-          id: el.data.id,
-          name: el.data.name,
-          life: el.data.stats[0].base_stat,
-          attack: el.data.stats[1].base_stat,
-          defense: el.data.stats[2].base_stat,
-          speed: el.data.stats[5].base_stat,
-          height: el.data.height,
-          weight: el.data.weight,
-          img:
-            el.data.sprites.other.home.front_default ||
-            "http://misiontokyo.com/wp-content/uploads/2021/06/pc-ut-pokemon-all-stars-hero-1.jpg",
-          types: el.data.types.map((el) => el.type.name),
-        };
+    // //llamando datos de pokemons-------
+    // const apiInfoPoke = await res.map(async (d) => await axios.get(d.url));
+    // let apiInfoPokemonTotals = await Promise.all(apiInfoPoke).then((data) => {
+    //   let pokeInfo = data.map((el) => {
+    //     return {
+    //       id: el.data.id,
+    //       name: el.data.name,
+    //       life: el.data.stats[0].base_stat,
+    //       attack: el.data.stats[1].base_stat,
+    //       defense: el.data.stats[2].base_stat,
+    //       speed: el.data.stats[5].base_stat,
+    //       height: el.data.height,
+    //       weight: el.data.weight,
+    //       img:
+    //         el.data.sprites.other.home.front_default ||
+    //         "http://misiontokyo.com/wp-content/uploads/2021/06/pc-ut-pokemon-all-stars-hero-1.jpg",
+    //       types: el.data.types.map((el) => el.type.name),
+    //     };
+    //   });
+    //   return pokeInfo;
+    // });
+    // //fin llamando datos de pokemons-------
+    let newAr = [];
+    //-----inicio for----------------
+    for (let i = 0; i < 2; i++) {
+      let el = await axios.get(res[i].url);
+      // console.log("el i es", i);
+      newAr.push({
+        id: el.data.id,
+        name: el.data.name,
+        life: el.data.stats[0].base_stat,
+        attack: el.data.stats[1].base_stat,
+        defense: el.data.stats[2].base_stat,
+        speed: el.data.stats[5].base_stat,
+        height: el.data.height,
+        weight: el.data.weight,
+        img:
+          el.data.sprites.other.home.front_default ||
+          "http://misiontokyo.com/wp-content/uploads/2021/06/pc-ut-pokemon-all-stars-hero-1.jpg",
+        types: el.data.types.map((el) => el.type.name),
       });
-      return pokeInfo;
-    });
-    //fin llamando datos de pokemons-------
+    }
+    return newAr;
+
+    //-----fin for-------------------
     //-------fin para 40---------
     return apiInfoPokemonTotals;
   } catch (error) {}
