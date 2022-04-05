@@ -75,9 +75,10 @@ const getApiInfoPokemon = async () => {
     //   return pokeInfo;
     // });
     // //fin llamando datos de pokemons-------
-    let newAr = [];
+
+    let newAr = []; //array
     //-----inicio for----------------
-    for (let i = 0; i < 2; i++) {
+    for (let i = 0; i < 21; i++) {
       let el = await axios.get(res[i].url);
       // console.log("el i es", i);
       newAr.push({
@@ -96,10 +97,9 @@ const getApiInfoPokemon = async () => {
       });
     }
     return newAr;
-
     //-----fin for-------------------
     //-------fin para 40---------
-    return apiInfoPokemonTotals;
+    // return apiInfoPokemonTotals; //----------con promise all------
   } catch (error) {}
 };
 //-------fin traer pokemons lo de la api-----
