@@ -1,8 +1,18 @@
 const axios = require("axios");
 // import axios from "axios";
 export const GET_POKEMONS = "getPokemons";
-
+export const FILTER_BY_TYPE = "FilterPokesBytype";
+//--
+export function FilterPokesBytype(params) {
+  return {
+    type: FILTER_BY_TYPE,
+    payload: params,
+  };
+}
+//--
 export function xx(params) {}
+//--
+
 export default function getPokemons() {
   return async function (dispatch) {
     var json = await axios.get(`http://localhost:3001/pokemons`, {});

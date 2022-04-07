@@ -1,4 +1,6 @@
 const { Router } = require("express");
+const { Op } = require("sequelize");
+
 const router = Router();
 const axios = require("axios");
 const urlEnd = `http://pokeapi.co/api/v2/pokemon`;
@@ -78,7 +80,7 @@ const getApiInfoPokemon = async () => {
 
     let newAr = []; //array
     //-----inicio for----------------
-    for (let i = 0; i < 21; i++) {
+    for (let i = 0; i < 4; i++) {
       let el = await axios.get(res[i].url);
       // console.log("el i es", i);
       newAr.push({
@@ -189,9 +191,19 @@ router.post("/pokemons", async (req, res) => {
     img,
     inDb,
   });
+  // //-----
+  // let typeDb = await Type.findAll({
+  //   where: { name: types },
+  // });
+  // //-----
+  //-----ruptur
+  let tipos = types.split(" ");
+  if (tipos.length == 1) tipos[1] = "";
   let typeDb = await Type.findAll({
-    where: { name: types },
+    where: { [Op.or]: [{ name: tipos[0] }, { name: tipos[1] }] },
   });
+  //------
+
   // if (typeDb.length === 0) {
   //   res.send("el typo no exieste, ");
   // } else {

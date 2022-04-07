@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import estilos from "./Home.module.css";
 import Paginado from "./Paginado";
 //acciones
-// import { getPokemons } from "../actions/index.js";
+import { FilterPokesBytype } from "../actions/index.js";
 import getPokemons from "../actions/index";
 import { xx } from "../actions/index";
 
@@ -44,6 +44,10 @@ export default function Home(params) {
     e.preventDefault();
     dispatch(getPokemons());
   }
+  //---
+  function handleFilterStatus(params) {
+    dispatch(FilterPokesBytype(params.target.value));
+  }
 
   //----fin funciones--------------
 
@@ -63,11 +67,16 @@ export default function Home(params) {
           <option value="Desc">Descenden</option>
         </select>
         {/* Botones/Opciones para filtrar por tipo de pokemon */}
-        <select name="" id="">
+        <select name="" id="" onChange={(e) => handleFilterStatus(e)}>
           <option value="All">Todos</option>
-          <option value="Fire">Fire</option>
+          <option value="normal">Normal</option>
+          <option value="poison">poison</option>
+          <option value="flying">flying</option>
+          <option value="fire">Fire</option>
           <option value="Water">Water</option>
           <option value="Electric">Elect</option>
+          <option value="All">Todos</option>
+
           {/* hhh {allTypes?.map((e)=>(
                         <option key={e} value={e}>{e}</option>
                     ))}*/}

@@ -1,0 +1,128 @@
+--cree la base de datos
+CREATE DATABASE pokemon
+--
+--consulto
+\l
+--
+--me ubico en la base creada:
+\c pokemon
+--
+--me posiciono y veo las bases creadas
+\dt
+--
+--selecciono alguna tabla
+SELECT * FROM "pokemon_type";
+SELECT * FROM "pokemons";
+SELECT * FROM "types";
+--
+--creo los modelos pokemon y type, en la carpeta models
+
+--creo una relacion de esos modelos en el archivo db.js donde se llamo la base de datos
+ 
+--ahora hago las rutas
+ -instalo axios: npm install axios
+
+--en el index de routes voy a importar axios
+
+//--------------------------------------------
+
+--en la parte del front instalare las dependencias para intalar redux, crrear rutas y todas las dependencias
+
+npm i redux-thunk
+npm i react-router-dom
+npm i axios
+npm i react-redux 
+npm i redux
+npm i redux-devtools-extension
+
+--creo las carpetas 
+actions, components,reducer,store
+
+--creo el store, el archivo index, y añado los datos, ademas de la importacion de los reducer (si hay varios hago un combine reducer)
+
+--debo crear el reducer inicialmente es una funcion que va a hacer el cambio de estado, (inicialmente solo se deja declarada la funcion para continuar con el paso sigueinte)
+
+
+--debo de ir a lel index.js principal  en la carpeta Src, importo lo siguiente:
+el browser, el provider y el store
+import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store/index";
+
+--voy al app.js 
+en este archivo voy a importar:
+  * import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+y envuelvo con </BrowserRouter> el div de la aplicacion 
+
+
+* creo un carpeta modulos componentes, y creo el landing pages, le paso estilos todo 
+
+--------voy al actions>index.js
+--creo el actions en el index.js ahi voy a colocar las acciones, primero creo
+-funcion de GET_POKEMONS (se encarga llamar api y entregar data)
+---------------------------------
+
+--------voy al reducer>index.js
+--con esa accion (GET_POKEMONS) voy al reducer e importo esa accion para que quede relacionada al reducer y posteriormente se pueda utilizar por el store
+
+-creo un estado inicial para esa accion (initialstate)
+
+-modifico el estado con GET_POKEMONS (modifica o añade el data el initial state)
+-----------------------------
+
+**como inicialemente se quiere es traer todos los pokemones al ir a home entonces ahora si voy al componente **
+--------voy al components>home.jsx
+
+y aqui es donde voy  a hacer el llamado o despacho de la accion GET_POKEMONS :
+-coloco los links para crear pokemones, un boton para recargar pokemones , luego renderizo los filtros (aun sin la logica pero ya se va plasmando aun sin funciones)
+
+--------voy al components>Card.jsx
+para renderizo cada pokemon o carta al cual le voy a pasar desde el home las propiedades cuando haga el lllamado a una carta
+
+--------voy al components>home.jsx
+importo  components>Card.jsx y lo coloco dentro del div para renderizarlo. 
+
+-------ahora si ya puedo hacer el ruteo:
+--------voy al src>app.jsx
+---------------------------
+**ahora se va a crear la logica del paginado
+en donde yo colocare lo siguiente:**
+
+--------voy al components>home.jsx
+en este componente lo que hago es colocar de donde a donde se va a toame rlos pokemon y creo una funcion que me setee los estados locales que permiten para cada pagina decirle de donde a donde tomar los pokemones.
+
+--------voy al components>paginado.jsx
+y es aqui donde implemento y llamo al setPaginado( que es el que cambia el estado de la pagina)
+--------voy al components>home.jsx
+importo el componente paginado y lo que hace es que lo renderizo, ademas en el llamando al componente card o que hare es colocar pokesToPage que es la cantidad de 12 pokes dependientdo de la pagina
+--------
+
+**ahora se va crear los filtros **
+--------voy al actions>index.js
+
+//----esto es para cuando mnecesite llamar el tipo
+m=[{"name": "normal"},{"name": "fire"},]
+mm=["grass","poison"]
+ml=[]
+typeof (mm[0])=="string"?mm:m.map((el)=>el.name)
+(2) ['grass', 'poison']
+m=[{"name": "normal"},{"name": "fire"},]
+mm=["grass","poison"]
+ml=[]
+typeof (m[0])=="string"?mm:m.map((el)=>el.name)
+(2) ['normal', 'fire']
+
+
+//error:
+en la linea 194 en api>src>routes>index.js linea 194 -205 se rompe en ocaciones con el Op
+
+//---------------
+
+
+
+
+
+
+
+
