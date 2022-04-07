@@ -191,17 +191,17 @@ router.post("/pokemons", async (req, res) => {
     img,
     inDb,
   });
-  // //-----
-  // let typeDb = await Type.findAll({
-  //   where: { name: types },
-  // });
-  // //-----
-  //-----ruptur
-  let tipos = types.split(" ");
-  if (tipos.length == 1) tipos[1] = "";
+  //-----
   let typeDb = await Type.findAll({
-    where: { [Op.or]: [{ name: tipos[0] }, { name: tipos[1] }] },
+    where: { name: types },
   });
+  //-----
+  //-----ruptur
+  // let tipos = types.split(" ");
+  // if (tipos.length == 1) tipos[1] = "";
+  // let typeDb = await Type.findAll({
+  //   where: { [Op.or]: [{ name: tipos[0] }, { name: tipos[1] }] },
+  // });
   //------
 
   // if (typeDb.length === 0) {

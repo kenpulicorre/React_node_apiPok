@@ -112,7 +112,7 @@ mm=["grass","poison"]
 ml=[]
 typeof (m[0])=="string"?mm:m.map((el)=>el.name)
 (2) ['normal', 'fire']
-
+d
 
 
 //error:

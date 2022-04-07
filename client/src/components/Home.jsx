@@ -6,7 +6,11 @@ import { Link } from "react-router-dom";
 import estilos from "./Home.module.css";
 import Paginado from "./Paginado";
 //acciones
-import { FilterPokesBytype } from "../actions/index.js";
+import {
+  FilterPokesBytype,
+  FilterPokesCreated,
+  orderByName,
+} from "../actions/index.js";
 import getPokemons from "../actions/index";
 import { xx } from "../actions/index";
 
@@ -19,7 +23,7 @@ export default function Home(params) {
   xx();
   const dispatch = useDispatch(); //mapdispatchtoprops
   const allPokemons = useSelector((state) => state.todosPokemons); //mapstatetoprops
-
+  const [order, setOrder] = useState("");
   //------------------pokesToPage-----
   const [currentPage, setCurrentPage] = useState(1);
   const [pokePage, setPokePage] = useState(12);
@@ -48,6 +52,20 @@ export default function Home(params) {
   function handleFilterStatus(params) {
     dispatch(FilterPokesBytype(params.target.value));
   }
+  //---
+  function handleFilterCreated(params) {
+    dispatch(FilterPokesCreated(params.target.value));
+  }
+
+  //---
+  //---
+  function handleOrder(params) {
+    params.preventDefault();
+    dispatch(orderByName(params.target.value));
+    setCurrentPage(1);
+    setOrder(`actualiza estado local`);
+    //setOrder(`ordenado ${params.target.value}`);
+  }
 
   //----fin funciones--------------
 
@@ -60,7 +78,7 @@ export default function Home(params) {
       <button onClick={(e) => handleClick(e)}>Recargar pokemons</button>
       {/* filtros------------------------- */}
       <div>
-        <select name="" id="">
+        <select name="" id="" onChange={(e) => handleOrder(e)}>
           {/* ascendentemente como descendentemente */}
 
           <option value="Asc">Ascendente</option>
@@ -81,8 +99,8 @@ export default function Home(params) {
                         <option key={e} value={e}>{e}</option>
                     ))}*/}
         </select>
-        {/* filtro todos, existente o creado */}
-        <select name="" id="">
+        {/* filtro todos, existente creado */}
+        <select name="" id="" onChange={(e) => handleFilterCreated(e)}>
           <option value="All">Todos</option>
           <option value="Create">Creados</option>
           <option value="ExistenteApi">Existente</option>
