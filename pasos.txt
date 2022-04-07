@@ -114,6 +114,7 @@ typeof (m[0])=="string"?mm:m.map((el)=>el.name)
 (2) ['normal', 'fire']
 
 
+
 //error:
 en la linea 194 en api>src>routes>index.js linea 194 -205 se rompe en ocaciones con el Op
 
