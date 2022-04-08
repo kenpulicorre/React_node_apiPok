@@ -17,6 +17,7 @@ import { xx } from "../actions/index";
 //componentes
 import Card from "./Card";
 import SearchBar from "./SearchBar";
+import { CreateForm } from "./CreateForm";
 //-----------------------------------------
 
 export default function Home(params) {
@@ -117,6 +118,7 @@ export default function Home(params) {
         />
         {/* lalmado componente search */}
         <SearchBar />
+        <CreateForm />
         {/* llamando al componente card----- */}
         {pokesToPage?.map((el) => {
           return (

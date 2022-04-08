@@ -5,6 +5,8 @@ export const FILTER_BY_TYPE = "FilterPokesBytype";
 export const FILTER_CREATE = "FilterPokesCreated";
 export const ORDER_BY_NAME = "orderByName";
 export const GET_NAME_POKEMONS = "getNamePokemons";
+export const GET_TYPES = "getTypes";
+export const POST_POKEMON = "postPokemon";
 
 //--
 export function FilterPokesBytype(params) {
@@ -48,7 +50,42 @@ export function getNamePokemons(payload) {
   };
 }
 //--
+//--
+export function getTypes(params) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get("http://localhost:3001/types");
+      return dispatch({
+        type: GET_TYPES,
+        payload: json.data,
+      });
+    } catch (error) {
+      alert("no typos");
+      console.log(error);
+    }
+  };
+}
+
 export function xx(params) {}
+//--
+//--
+export function postPokemon(params) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.post("http://localhost:3001/pokemons", params);
+      console.log(json);
+      //return json
+      return dispatch({
+        type: POST_POKEMON,
+        payload: json,
+      });
+    } catch (error) {
+      alert("no pokes");
+      console.log(error);
+    }
+  };
+}
+
 //--
 
 export default function getPokemons() {

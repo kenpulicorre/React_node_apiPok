@@ -4,6 +4,8 @@ import {
   FILTER_CREATE,
   ORDER_BY_NAME,
   GET_NAME_POKEMONS,
+  GET_TYPES,
+  POST_POKEMON,
   AGREGAR_A_FAVORITOS,
   ELIMINAR_DE_FAVORITOS,
   DETALLE_PELICULA,
@@ -11,6 +13,7 @@ import {
 const initialState = {
   todosPokemons: [],
   pokemonSinFiltro: [],
+  types: [],
   peliculasFavoritas: [],
   pelicula: {},
   // amigosArray=[{name: apellido:}]
@@ -87,11 +90,14 @@ function rootReducer(state = initialState, action) {
     //----5
     case GET_NAME_POKEMONS:
       return { ...state, todosPokemons: action.payload };
+    //----6
+    case GET_TYPES:
+      return { ...state, types: action.payload };
+    //----7
+    case POST_POKEMON:
+      return { ...state };
     default:
       return state;
-
-    //----3
-    //----4
   }
   //---------
 }
