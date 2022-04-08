@@ -100,6 +100,8 @@ importo el componente paginado y lo que hace es que lo renderizo, ademas en el l
 
 **ahora se va crear los filtros **
 --------voy al actions>index.js
+**
+**ahora se va crear el buscador por nombre en el search bar se renderiza y se despacha dicha accion 
 
 //----esto es para cuando mnecesite llamar el tipo
 m=[{"name": "normal"},{"name": "fire"},]

@@ -3,6 +3,7 @@ import {
   FILTER_BY_TYPE,
   FILTER_CREATE,
   ORDER_BY_NAME,
+  GET_NAME_POKEMONS,
   AGREGAR_A_FAVORITOS,
   ELIMINAR_DE_FAVORITOS,
   DETALLE_PELICULA,
@@ -40,7 +41,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         todosPokemons: statusFiltered,
       };
-    // //----3
+    //----3
     case FILTER_CREATE:
       console.log("-------FILTER_CREATE");
 
@@ -59,8 +60,7 @@ function rootReducer(state = initialState, action) {
         ...state,
         todosPokemons: statusFiltered2,
       };
-    //---
-
+    //----4
     case ORDER_BY_NAME:
       console.log("-------orden k");
       let arrayOrdened =
@@ -84,7 +84,9 @@ function rootReducer(state = initialState, action) {
         ...state,
         todosPokemons: arrayOrdened,
       };
-    //---
+    //----5
+    case GET_NAME_POKEMONS:
+      return { ...state, todosPokemons: action.payload };
     default:
       return state;
 

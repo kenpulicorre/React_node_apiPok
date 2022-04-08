@@ -16,6 +16,7 @@ import { xx } from "../actions/index";
 
 //componentes
 import Card from "./Card";
+import SearchBar from "./SearchBar";
 //-----------------------------------------
 
 export default function Home(params) {
@@ -63,8 +64,8 @@ export default function Home(params) {
     params.preventDefault();
     dispatch(orderByName(params.target.value));
     setCurrentPage(1);
-    setOrder(`actualiza estado local`);
-    //setOrder(`ordenado ${params.target.value}`);
+    //setOrder(`actualiza estado local`);
+    setOrder(`ordenado ${params.target.value}`);
   }
 
   //----fin funciones--------------
@@ -114,7 +115,8 @@ export default function Home(params) {
           allPokemons={allPokemons.length}
           setPaginado={setPaginado}
         />
-
+        {/* lalmado componente search */}
+        <SearchBar />
         {/* llamando al componente card----- */}
         {pokesToPage?.map((el) => {
           return (
