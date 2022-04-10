@@ -5,6 +5,7 @@ import {
   ORDER_BY_NAME,
   GET_NAME_POKEMONS,
   GET_TYPES,
+  GET_DETAIL,
   POST_POKEMON,
   AGREGAR_A_FAVORITOS,
   ELIMINAR_DE_FAVORITOS,
@@ -14,6 +15,7 @@ const initialState = {
   todosPokemons: [],
   pokemonSinFiltro: [],
   types: [],
+  detalle: [],
   peliculasFavoritas: [],
   pelicula: {},
   // amigosArray=[{name: apellido:}]
@@ -96,6 +98,13 @@ function rootReducer(state = initialState, action) {
     //----7
     case POST_POKEMON:
       return { ...state };
+
+    //-----8
+    case GET_DETAIL:
+      return {
+        ...state,
+        detalle: action.payload,
+      };
     default:
       return state;
   }

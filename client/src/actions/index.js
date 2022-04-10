@@ -7,6 +7,7 @@ export const ORDER_BY_NAME = "orderByName";
 export const GET_NAME_POKEMONS = "getNamePokemons";
 export const GET_TYPES = "getTypes";
 export const POST_POKEMON = "postPokemon";
+export const GET_DETAIL = "getDetallePoke";
 
 //--
 export function FilterPokesBytype(params) {
@@ -61,6 +62,22 @@ export function getTypes(params) {
       });
     } catch (error) {
       alert("no typos");
+      console.log(error);
+    }
+  };
+}
+//--
+//--
+//9-04 10pm
+export function getDetallePoke(id) {
+  return async function (dispatch) {
+    try {
+      const json = await axios.get("http://localhost:3001/pokemons/" + id);
+      return dispatch({
+        type: GET_DETAIL,
+        payload: json.data,
+      });
+    } catch (error) {
       console.log(error);
     }
   };
