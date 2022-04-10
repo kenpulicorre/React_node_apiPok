@@ -3,3 +3,44 @@
   display: flex;
   justify-content: center;
 }
+
+.back {
+  color: rgb(255, 255, 255);
+  margin-top: 50px;
+  background: rgb(190, 25, 25);
+  background: radial-gradient(
+    circle,
+    rgb(190, 25, 25) 0%,
+    rgba(190, 25, 25) 100%
+  );
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  margin: auto;
+  width: 100px;
+  height: 30px;
+  font-size: 25px;
+  transition: 0.3s;
+}
+
+.create {
+  color: rgb(255, 255, 255);
+  grid-column: 5 / 6;
+  margin: auto;
+  margin-right: 10px;
+  margin-top: -2px;
+  font-size: 20px;
+  padding: 5px 10px;
+  background: rgb(190, 25, 25);
+  background: radial-gradient(
+    circle,
+    rgba(190, 25, 25) 0%,
+    rgba(190, 25, 25) 100%
+  );
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: 0.3s;
+}

@@ -51,7 +51,7 @@ export default function Home(params) {
     dispatch(getPokemons());
   }
   //---
-  function handleFilterStatus(params) {
+  function handleFilterType(params) {
     dispatch(FilterPokesBytype(params.target.value));
   }
   //---
@@ -87,7 +87,7 @@ export default function Home(params) {
           <option value="Desc">Descenden</option>
         </select>
         {/* Botones/Opciones para filtrar por tipo de pokemon */}
-        <select name="" id="" onChange={(e) => handleFilterStatus(e)}>
+        <select name="" id="" onChange={(e) => handleFilterType(e)}>
           <option value="All">Todos</option>
           <option value="normal">Normal</option>
           <option value="poison">poison</option>
@@ -130,8 +130,8 @@ export default function Home(params) {
                   name={el.name}
                   image={el.img}
                   type={el.types}
+                  inDb={el.inDb ? el.inDb : false}
                 />
-                ;
               </Link>
             </Fragment>
           );

@@ -61,7 +61,7 @@ export function getTypes(params) {
         payload: json.data,
       });
     } catch (error) {
-      alert("no typos");
+      alert("no tipos");
       console.log(error);
     }
   };

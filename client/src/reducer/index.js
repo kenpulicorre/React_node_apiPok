@@ -40,8 +40,21 @@ function rootReducer(state = initialState, action) {
       const statusFiltered =
         action.payload === "All"
           ? allPokemons
-          : allPokemons.filter((el) => el.types?.includes(action.payload));
-      console.log(statusFiltered);
+          : allPokemons.filter((el) => {
+              console.log("el elemento filtrado es", el);
+              if (el.inDb) {
+                let ar = el.types.map((el) => el.name);
+                console.log("el.types.name s---", ar);
+
+                return ar?.includes(action.payload);
+              } else {
+                console.log("el.typess---", el.types);
+                return el.types?.includes(action.payload);
+              }
+
+              return el.types?.includes(action.payload);
+            });
+      console.log("filtro es:", statusFiltered);
       return {
         ...state,
         todosPokemons: statusFiltered,
