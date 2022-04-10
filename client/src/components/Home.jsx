@@ -10,6 +10,7 @@ import {
   FilterPokesBytype,
   FilterPokesCreated,
   orderByName,
+  getTypes,
 } from "../actions/index.js";
 import getPokemons from "../actions/index";
 import { xx } from "../actions/index";
@@ -25,6 +26,7 @@ export default function Home(params) {
   xx();
   const dispatch = useDispatch(); //mapdispatchtoprops
   const allPokemons = useSelector((state) => state.todosPokemons); //mapstatetoprops
+  const allTypes = useSelector((state) => state.types);
   const [order, setOrder] = useState("");
   //------------------pokesToPage-----
   const [currentPage, setCurrentPage] = useState(1);
@@ -42,6 +44,7 @@ export default function Home(params) {
   //cuando el componente se monta traer pokes
   useEffect(() => {
     dispatch(getPokemons());
+    dispatch(getTypes());
   }, [dispatch]); //[] =1sola vez,[state]=cada state ejecuta
 
   //----fin hook iniciales---------
@@ -89,17 +92,27 @@ export default function Home(params) {
         {/* Botones/Opciones para filtrar por tipo de pokemon */}
         <select name="" id="" onChange={(e) => handleFilterType(e)}>
           <option value="All">Todos</option>
-          <option value="normal">Normal</option>
+          {/* <option value="normal">Normal</option>
           <option value="poison">poison</option>
           <option value="flying">flying</option>
           <option value="fire">Fire</option>
           <option value="Water">Water</option>
           <option value="Electric">Elect</option>
-          <option value="All">Todos</option>
+          <option value="All">Todos</option> */}
+          {allTypes?.map((e) => (
+            <option key={e.id} value={e.name}>
+              {e.name}
+            </option>
+          ))}
 
-          {/* hhh {allTypes?.map((e)=>(
-                        <option key={e} value={e}>{e}</option>
-                    ))}*/}
+          {allTypes?.map((e) => {
+            console.log("todos los tipos son---- ", e.name);
+            //(
+            //   <option key={e.id} value={e.name}>
+            //     {e.name}
+            //   </option>
+            // );
+          })}
         </select>
         {/* filtro todos, existente creado */}
         <select name="" id="" onChange={(e) => handleFilterCreated(e)}>

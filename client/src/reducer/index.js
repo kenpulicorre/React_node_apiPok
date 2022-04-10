@@ -41,7 +41,6 @@ function rootReducer(state = initialState, action) {
         action.payload === "All"
           ? allPokemons
           : allPokemons.filter((el) => {
-              console.log("el elemento filtrado es", el);
               if (el.inDb) {
                 let ar = el.types.map((el) => el.name);
                 console.log("el.types.name s---", ar);
