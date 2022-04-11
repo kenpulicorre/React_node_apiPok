@@ -11,7 +11,7 @@ import { postPokemon, getTypes } from "../actions/index.js";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
 //-----------------------------------------
-export function CreateForm(params) {
+export default function CreateForm(params) {
   const dispatch = useDispatch();
   // const antes = useHistory();
   const types = useSelector((state) => state.types);
@@ -102,7 +102,7 @@ export function CreateForm(params) {
     if (
       allPokemons.find((p) => p.name.toLowerCase() === input.name.toLowerCase())
     ) {
-      errors.name = "ya exite dicho pokemon";
+      errors.name = "ya existe dicho pokemon";
     }
     //3
 
@@ -117,7 +117,7 @@ export function CreateForm(params) {
     //5
     if (
       !numerico.test(input.attack) ||
-      input.attack > 200 ||
+      input.attack > 300 ||
       input.attack < 1
     ) {
       errors.attack = "Se espera un valor entre 1 y 300";
@@ -128,11 +128,11 @@ export function CreateForm(params) {
       input.defense > 200 ||
       input.defense < 1
     ) {
-      errors.defense = "Se espera un valor entre 1 y 300";
+      errors.defense = "Se espera un valor entre 1 y 200";
     }
     //7
-    if (!numerico.test(input.speed) || input.speed > 200 || input.speed < 1) {
-      errors.speed = "Se espera un valor entre 1 y 300";
+    if (!numerico.test(input.speed) || input.speed > 250 || input.speed < 1) {
+      errors.speed = "Se espera un valor entre 1 y 250";
     }
     //8
     if (
@@ -145,7 +145,7 @@ export function CreateForm(params) {
     //9
     if (
       !numerico.test(input.weight) ||
-      input.weight > 1000 ||
+      input.weight > 2000 ||
       input.weight < 1
     ) {
       errors.weight = "Se espera un valor entre 1 y 2000";

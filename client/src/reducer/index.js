@@ -7,6 +7,8 @@ import {
   GET_TYPES,
   GET_DETAIL,
   POST_POKEMON,
+  ORDER_BY_FUERZA,
+  DETALLE_RESTAURAR,
   AGREGAR_A_FAVORITOS,
   ELIMINAR_DE_FAVORITOS,
   DETALLE_PELICULA,
@@ -116,6 +118,42 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         detalle: action.payload,
+      };
+
+    //--9
+
+    case ORDER_BY_FUERZA:
+      console.log("-------orden FUERZA");
+      const allPokemons3 = state.pokemonSinFiltro;
+
+      let arrayOrdened2 =
+        action.payload === "All"
+          ? allPokemons3
+          : action.payload === "alta"
+          ? state.todosPokemons.sort((a, b) => {
+              if (a.attack > b.attack) {
+                return 1;
+              } else if (a.attack < b.attack) {
+                return -1;
+              } else return 0;
+            })
+          : state.todosPokemons.sort((a, b) => {
+              if (a.attack > b.attack) {
+                return -1;
+              } else if (a.attack < b.attack) {
+                return 1;
+              } else return 0;
+            });
+      console.log("arrayOrdened", arrayOrdened2);
+      return {
+        ...state,
+        todosPokemons: arrayOrdened2,
+      };
+    //--10
+    case DETALLE_RESTAURAR:
+      return {
+        ...state,
+        detalle: {},
       };
     default:
       return state;

@@ -8,9 +8,12 @@ export const GET_NAME_POKEMONS = "getNamePokemons";
 export const GET_TYPES = "getTypes";
 export const POST_POKEMON = "postPokemon";
 export const GET_DETAIL = "getDetallePoke";
+export const ORDER_BY_FUERZA = "orderByFuerza";
+export const DETALLE_RESTAURAR = "restartDetalle";
 
 //--
 export function FilterPokesBytype(params) {
+  console.log("----FilterPokesBytype Ok!");
   return {
     type: FILTER_BY_TYPE,
     payload: params,
@@ -19,6 +22,7 @@ export function FilterPokesBytype(params) {
 //--
 //--
 export function FilterPokesCreated(params) {
+  console.log("----FilterPokesCreated Ok!");
   return {
     type: FILTER_CREATE,
     payload: params,
@@ -27,6 +31,7 @@ export function FilterPokesCreated(params) {
 //--
 //--
 export function orderByName(params) {
+  console.log("----orderByName Ok!");
   return {
     type: ORDER_BY_NAME,
     payload: params,
@@ -34,7 +39,29 @@ export function orderByName(params) {
 }
 //--
 //--
+export function orderByFuerza(params) {
+  console.log("----orderByFuerza Ok!");
+
+  return {
+    type: ORDER_BY_FUERZA,
+    payload: params,
+  };
+}
+//--
+//--
+export function restartDetalle(params) {
+  console.log("----restartDetalle Ok!");
+
+  return {
+    type: DETALLE_RESTAURAR,
+    payload: params,
+  };
+}
+//--
+//--
 export function getNamePokemons(payload) {
+  console.log("----getNamePokemons Ok!");
+
   return async function (dispatch) {
     try {
       const json = await axios.get(
@@ -53,6 +80,7 @@ export function getNamePokemons(payload) {
 //--
 //--
 export function getTypes(params) {
+  console.log("----getTypes Ok!");
   return async function (dispatch) {
     try {
       const json = await axios.get("http://localhost:3001/types");
@@ -70,6 +98,7 @@ export function getTypes(params) {
 //--
 //9-04 10pm
 export function getDetallePoke(id) {
+  console.log("----getDetallePoke Ok!");
   return async function (dispatch) {
     try {
       const json = await axios.get("http://localhost:3001/pokemons/" + id);
@@ -87,6 +116,7 @@ export function xx(params) {}
 //--
 //--
 export function postPokemon(params) {
+  console.log("----postPokemon Ok!");
   return async function (dispatch) {
     try {
       const json = await axios.post("http://localhost:3001/pokemons", params);
@@ -102,16 +132,24 @@ export function postPokemon(params) {
     }
   };
 }
+//---
 
+//---
 //--
 
 export default function getPokemons() {
+  console.log("----getPokemons Ok!");
   return async function (dispatch) {
-    var json = await axios.get(`http://localhost:3001/pokemons`, {});
-    console.log("POKEMONES,", json);
-    return dispatch({
-      type: GET_POKEMONS,
-      payload: json.data,
-    });
+    try {
+      var json = await axios.get(`http://localhost:3001/pokemons`, {});
+      console.log("POKEMONES,", json);
+      return dispatch({
+        type: GET_POKEMONS,
+        payload: json.data,
+      });
+    } catch (error) {
+      alert("Falla en obtencion de pokemon");
+      console.log(error);
+    }
   };
 }

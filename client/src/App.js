@@ -13,9 +13,9 @@ function App() {
           <Route path="/home" element={<Home />}></Route>
           <Route path="/home/:id" element={<DetailPoke />} />
 
-          {/* <Route path="/pokemon" element={<CreateForm />} /> */}
+          <Route path="/pokemon" element={<CreateForm />} />
         </Routes>
-        <h1>Henry Pokemon kenneth</h1>
+        <h1> created by kenneth @kenpulicorre</h1>
       </div>
     </BrowserRouter>
   );

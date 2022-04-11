@@ -28,6 +28,7 @@ export default function SearchBar() {
         type="text"
         placeholder="pokemon a buscar..."
         onChange={(e) => handleInputOnChange(e)}
+        value={name}
       />
       <button type="submit" onClick={(e) => handleSubmit(e)}>
         Buscar

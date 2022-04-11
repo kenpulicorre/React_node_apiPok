@@ -11,6 +11,8 @@ import {
   FilterPokesCreated,
   orderByName,
   getTypes,
+  orderByFuerza,
+  restartDetalle,
 } from "../actions/index.js";
 import getPokemons from "../actions/index";
 import { xx } from "../actions/index";
@@ -18,7 +20,7 @@ import { xx } from "../actions/index";
 //componentes
 import Card from "./Card";
 import SearchBar from "./SearchBar";
-import { CreateForm } from "./CreateForm";
+import CreateForm from "./CreateForm";
 //-----------------------------------------
 
 export default function Home(params) {
@@ -45,6 +47,7 @@ export default function Home(params) {
   useEffect(() => {
     dispatch(getPokemons());
     dispatch(getTypes());
+    dispatch(restartDetalle());
   }, [dispatch]); //[] =1sola vez,[state]=cada state ejecuta
 
   //----fin hook iniciales---------
@@ -70,6 +73,12 @@ export default function Home(params) {
     setCurrentPage(1);
     //setOrder(`actualiza estado local`);
     setOrder(`ordenado ${params.target.value}`);
+  }
+  //
+  function handleFuerza(params) {
+    params.preventDefault();
+    dispatch(orderByFuerza(params.target.value));
+    setOrder(`actualizar estado local ${params.target.value}`);
   }
 
   //----fin funciones--------------
@@ -120,6 +129,13 @@ export default function Home(params) {
           <option value="Create">Creados</option>
           <option value="ExistenteApi">Existente</option>
         </select>
+
+        {/* filtro fuerza */}
+        <select name="" id="" onChange={(e) => handleFuerza(e)}>
+          <option value="All">Fuerza</option>
+          <option value="alta">Fuerza ascendente</option>
+          <option value="baja">Fuerza Descendente</option>
+        </select>
         {/* fin filtros-------------------------
        --------------------------------------  */}
 
@@ -131,7 +147,7 @@ export default function Home(params) {
         />
         {/* lalmado componente search */}
         <SearchBar />
-        <CreateForm />
+        {/* <CreateForm /> */}
         {/* llamando al componente card----- */}
         {pokesToPage?.map((el) => {
           return (
