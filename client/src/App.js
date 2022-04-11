@@ -15,7 +15,6 @@ function App() {
 
           <Route path="/pokemon" element={<CreateForm />} />
         </Routes>
-        <h1> created by kenneth @kenpulicorre</h1>
       </div>
     </BrowserRouter>
   );

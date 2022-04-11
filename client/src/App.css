@@ -1,6 +1,12 @@
 .App {
   background-image: url("./images/fondo.jpg");
   text-align: center;
+  /* position: absolute; */
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  background-attachment: fixed;
 }
 
 .App-logo {

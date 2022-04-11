@@ -9,19 +9,13 @@ import {
   POST_POKEMON,
   ORDER_BY_FUERZA,
   DETALLE_RESTAURAR,
-  AGREGAR_A_FAVORITOS,
-  ELIMINAR_DE_FAVORITOS,
-  DETALLE_PELICULA,
+  GET_DELETE_NAME_POKEMONS,
 } from "../actions/index.js";
 const initialState = {
   todosPokemons: [],
   pokemonSinFiltro: [],
   types: [],
   detalle: [],
-  peliculasFavoritas: [],
-  pelicula: {},
-  // amigosArray=[{name: apellido:}]
-  //
 };
 function rootReducer(state = initialState, action) {
   //---------
@@ -155,6 +149,10 @@ function rootReducer(state = initialState, action) {
         ...state,
         detalle: {},
       };
+    //--11
+    //----12
+    //   case GET_DELETE_NAME_POKEMONS:
+    //     return { ...state, todosPokemons: action.payload };
     default:
       return state;
   }

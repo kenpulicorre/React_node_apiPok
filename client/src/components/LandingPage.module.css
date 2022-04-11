@@ -1,14 +1,66 @@
 .landing {
   background-image: url("../images/landing.jpg");
-  background-size: cover;
-  height: 100vh;
+  min-height: 100vh;
+
   background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
+  background-position: center;
+  height: 80vh;
+  background-attachment: fixed;
+  background-size: cover;
+
+  position: relative;
+
   align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  /* /
+ 
+  / */
 }
-.img {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
+
+.texto {
+  color: rgb(76, 78, 192);
+  text-shadow: 5px 5px 1px rgb(32, 18, 18);
+  font-size: 7em;
+
+  /* position: absolute; */
+  top: 2em;
+  font-family: "Fantasy", cursive;
+}
+
+button {
+  color: rgba(12, 13, 14, 0.849);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 2em;
+  font-family: "Fantasy", cursive;
+  font-weight: 800;
+}
+
+.button {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  background: radial-gradient(
+    circle,
+    rgb(30, 83, 163) 0%,
+    rgba(119, 0, 65, 1) 80%
+  );
+  border: 1px solid rgb(194, 235, 12);
+  border-width: 5px;
+  border-radius: 10px;
+  box-shadow: rgb(31, 58, 88) -10px 10px 40px -15px;
+  padding: 10px 80px;
+
+  transition: 0.8s;
+}
+
+.button:hover {
+  transform: scale(1.2) rotate(5deg);
+}
+.fintexto {
+  position: relative;
+  top: 75px;
 }

@@ -67,7 +67,11 @@ export default function CreateForm(params) {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(input);
-    dispatch(postPokemon(input));
+    if (errors.life) {
+      return alert("debe de agregar cada valor!!");
+    } else {
+      dispatch(postPokemon(input));
+    }
     alert("pokemon creado!!");
     setInput({
       name: "",
@@ -168,7 +172,12 @@ export default function CreateForm(params) {
         <button>Volver</button>
       </Link>
       <h1>Crea pokemon</h1>
-      <form action="" onSubmit={(e) => handleSubmit(e)}>
+      <form
+        action=""
+        onSubmit={(e) => {
+          return handleSubmit(e);
+        }}
+      >
         <div>
           <label htmlFor="">Nombre:</label>
           <input

@@ -80,7 +80,7 @@ const getApiInfoPokemon = async () => {
 
     let newAr = []; //array
     //-----inicio for----------------
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < 15; i++) {
       let el = await axios.get(res[i].url);
       // console.log("el i es", i);
       newAr.push({

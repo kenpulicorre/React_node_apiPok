@@ -3,13 +3,14 @@ const axios = require("axios");
 export const GET_POKEMONS = "getPokemons";
 export const FILTER_BY_TYPE = "FilterPokesBytype";
 export const FILTER_CREATE = "FilterPokesCreated";
-export const ORDER_BY_NAME = "orderByName";
-export const GET_NAME_POKEMONS = "getNamePokemons";
+export const ORDER_BY_NAME = "orderByName"; //ORDEN ALFABETICO
+export const GET_NAME_POKEMONS = "getNamePokemons"; //QUERY
 export const GET_TYPES = "getTypes";
 export const POST_POKEMON = "postPokemon";
-export const GET_DETAIL = "getDetallePoke";
+export const GET_DETAIL = "getDetallePoke"; //BY iD PARAMS
 export const ORDER_BY_FUERZA = "orderByFuerza";
 export const DETALLE_RESTAURAR = "restartDetalle";
+export const GET_DELETE_NAME_POKEMONS = "getDeleteNamePokemons";
 
 //--
 export function FilterPokesBytype(params) {
@@ -133,7 +134,24 @@ export function postPokemon(params) {
   };
 }
 //---
+// export function getDeleteNamePokemons(payload) {
+//   console.log("----getNamePokemons Ok!");
 
+//   return async function (dispatch) {
+//     try {
+//       const json = await axios.get(
+//         "http://localhost:3001/pokemons?name=" + payload
+//       );
+//       return dispatch({
+//         type: GET_DELETE_NAME_POKEMONS,
+//         payload: json.data,
+//       });
+//     } catch (error) {
+//       alert("no hay pokemon");
+//       console.log(error);
+//     }
+//   };
+// }
 //---
 //--
 

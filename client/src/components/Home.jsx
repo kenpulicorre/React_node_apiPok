@@ -21,6 +21,7 @@ import { xx } from "../actions/index";
 import Card from "./Card";
 import SearchBar from "./SearchBar";
 import CreateForm from "./CreateForm";
+import Loader from "./Loader";
 //-----------------------------------------
 
 export default function Home(params) {
@@ -84,6 +85,9 @@ export default function Home(params) {
   //----fin funciones--------------
 
   //
+  if (allPokemons.length < 1) {
+    return <Loader />;
+  }
 
   return (
     <div>
