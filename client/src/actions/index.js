@@ -97,7 +97,7 @@ export function getTypes(params) {
 }
 //--
 //--
-//9-04 10pm
+
 export function getDetallePoke(id) {
   console.log("----getDetallePoke Ok!");
   return async function (dispatch) {

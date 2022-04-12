@@ -1,8 +1,11 @@
 .ordenar {
+  border-radius: 10px 10px 10px 10px;
   display: flex;
-  justify-content: center;
+  justify-content: center center;
   cursor: pointer;
-  background-color: #090909bf;
+  background-color: #2e2828bf;
+  padding-top: 5px;
+  padding-bottom: 5px;
 }
 
 .ordenarul {
@@ -17,9 +20,9 @@
   /* display: inline-block; */
   /* color: white; */
   background-color: #8a0000;
-  padding: 50px;
-  border-radius: 5px;
-  margin: 20px;
+  padding: 10px;
+  border-radius: 10px;
+  margin: 10px;
 }
 
 .navPag {
@@ -46,4 +49,34 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: space-evenly;
+}
+
+.elem {
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-family: "Fantasy", cursive;
+  font-size: 20px;
+  font-weight: 800;
+  text-decoration: none;
+  /* border: none; */
+  cursor: pointer;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5px;
+  margin-left: 0.5px;
+  width: 20px;
+  height: 50px;
+  justify-content: center;
+  box-shadow: rgba(223, 29, 29, 0.56) 0px 22px 100px 40px;
+  border: 5px solid rgb(0, 0, 0);
+  border-width: 2px;
+  border-radius: 10px 10px 10px 10px;
+  color: rgb(201, 210, 216);
+  transition: 0.8s;
+}
+.elem:hover {
+  transform: scale(1.1);
 }

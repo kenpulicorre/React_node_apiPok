@@ -67,7 +67,7 @@ export default function CreateForm(params) {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(input);
-    if (errors.life) {
+    if (errors) {
       return alert("debe de agregar cada valor!!");
     } else {
       dispatch(postPokemon(input));

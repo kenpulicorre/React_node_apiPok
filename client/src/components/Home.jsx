@@ -23,7 +23,7 @@ import SearchBar from "./SearchBar";
 import CreateForm from "./CreateForm";
 import Loader from "./Loader";
 //-----------------------------------------
-
+var señal;
 export default function Home(params) {
   //----hook iniciales---------
   xx();
@@ -49,6 +49,8 @@ export default function Home(params) {
     dispatch(getPokemons());
     dispatch(getTypes());
     dispatch(restartDetalle());
+    señal = true;
+    console.log("señallllllllllllllllllllllllllll\n", señal);
   }, [dispatch]); //[] =1sola vez,[state]=cada state ejecuta
 
   //----fin hook iniciales---------
@@ -56,14 +58,21 @@ export default function Home(params) {
   function handleClick(e) {
     e.preventDefault();
     dispatch(getPokemons());
+    alert("Se cargara pokemones");
   }
   //---
   function handleFilterType(params) {
     dispatch(FilterPokesBytype(params.target.value));
+    if (allPokemons.length > 1) {
+      señal = false;
+    }
   }
   //---
   function handleFilterCreated(params) {
     dispatch(FilterPokesCreated(params.target.value));
+    if (allPokemons.length > 1) {
+      señal = false;
+    }
   }
 
   //---
@@ -74,36 +83,63 @@ export default function Home(params) {
     setCurrentPage(1);
     //setOrder(`actualiza estado local`);
     setOrder(`ordenado ${params.target.value}`);
+    if (allPokemons.length > 1) {
+      señal = false;
+    }
   }
   //
   function handleFuerza(params) {
     params.preventDefault();
     dispatch(orderByFuerza(params.target.value));
     setOrder(`actualizar estado local ${params.target.value}`);
+    if (allPokemons.length > 1) {
+      señal = false;
+    }
   }
 
   //----fin funciones--------------
 
   //
-  if (allPokemons.length < 1) {
+  // if (allPokemons.length < 1) {
+  //   return <Loader />;
+  // }
+  if (allPokemons.length < 1 && señal == true) {
     return <Loader />;
   }
-
   return (
     <div>
-      <Link to="/pokemon">Crea tu Pokemon</Link>
+      <div className={estilos.selector}>
+        <Link to="/pokemon" className={estilos.crear_poke}>
+          Crea tu Pokemon
+        </Link>
+
+        <button onClick={(e) => handleClick(e)} className={estilos.crear_poke}>
+          Recargar pokemons
+        </button>
+      </div>
+
       <h1>¡MANIFIESTA TU POKEMON!</h1>
-      <button onClick={(e) => handleClick(e)}>Recargar pokemons</button>
+
       {/* filtros------------------------- */}
       <div>
-        <select name="" id="" onChange={(e) => handleOrder(e)}>
-          {/* ascendentemente como descendentemente */}
-
+        {/* ascendentemente como descendentemente */}
+        <select
+          name=""
+          id=""
+          onChange={(e) => handleOrder(e)}
+          className={estilos.select}
+        >
           <option value="Asc">Ascendente</option>
           <option value="Desc">Descenden</option>
         </select>
+
         {/* Botones/Opciones para filtrar por tipo de pokemon */}
-        <select name="" id="" onChange={(e) => handleFilterType(e)}>
+        <select
+          name=""
+          id=""
+          onChange={(e) => handleFilterType(e)}
+          className={estilos.select}
+        >
           <option value="All">Todos</option>
           {/* <option value="normal">Normal</option>
           <option value="poison">poison</option>
@@ -127,15 +163,26 @@ export default function Home(params) {
             // );
           })}
         </select>
+
         {/* filtro todos, existente creado */}
-        <select name="" id="" onChange={(e) => handleFilterCreated(e)}>
+        <select
+          name=""
+          id=""
+          onChange={(e) => handleFilterCreated(e)}
+          className={estilos.select}
+        >
           <option value="All">Todos</option>
           <option value="Create">Creados</option>
           <option value="ExistenteApi">Existente</option>
         </select>
 
         {/* filtro fuerza */}
-        <select name="" id="" onChange={(e) => handleFuerza(e)}>
+        <select
+          name=""
+          id=""
+          onChange={(e) => handleFuerza(e)}
+          className={estilos.select}
+        >
           <option value="All">Fuerza</option>
           <option value="alta">Fuerza ascendente</option>
           <option value="baja">Fuerza Descendente</option>

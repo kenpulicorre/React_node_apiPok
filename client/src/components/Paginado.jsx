@@ -12,7 +12,9 @@ export default function Paginado({ pokePage, allPokemons, setPaginado }) {
         {nPages &&
           nPages.map((el) => (
             <li className={estilos.ordenar} key={el}>
-              <a onClick={() => setPaginado(el)}>{el}</a>
+              <a onClick={() => setPaginado(el)} className={estilos.elem}>
+                {el}
+              </a>
             </li>
           ))}
       </ul>
