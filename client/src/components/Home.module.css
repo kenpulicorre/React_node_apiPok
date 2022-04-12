@@ -4,13 +4,12 @@
   justify-content: center;
 }
 .Contenedor_filtro {
-  position: absolute;
-  top: 100px;
-  left: 350px;
+  position: relative;
+  top: 1px;
 }
 .select {
   margin-right: 40px;
-  margin-top: 110px;
+  margin-top: 10px;
   height: 30px;
   width: 180px;
   border-radius: 5px;
@@ -48,9 +47,41 @@
 }
 
 .selector {
+  top: 1px;
+  bottom: 1px;
+  position: relative;
+
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.selector2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  position: relative;
+  top: 10px;
+  color: rgb(76, 78, 192);
+  text-shadow: 5px 5px 1px rgb(32, 18, 18);
+  font-size: 3em;
+}
+.contenedor {
+  padding-top: 5px;
+  padding-bottom: 1px;
+  position: relative;
+
+  top: 0px;
+}
+.texto {
+  color: rgb(76, 78, 192);
+  text-shadow: 5px 5px 1px rgb(32, 18, 18);
+  font-size: 7em;
+
+  /* position: absolute; */
+  top: 2em;
+  font-family: "Fantasy", cursive;
 }
 
 /* button {

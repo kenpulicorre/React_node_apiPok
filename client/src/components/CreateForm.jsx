@@ -37,6 +37,7 @@ export default function CreateForm(params) {
 
   //-----logica-----
   function handleOnChange(e) {
+    console.log("errors", errors);
     setInput({
       ...input,
       [e.target.name]: e.target.value,
@@ -67,12 +68,16 @@ export default function CreateForm(params) {
   function handleSubmit(e) {
     e.preventDefault();
     console.log(input);
-    if (errors) {
+    let mm = errors;
+    console.log("errror es:", mm.attack, "def", mm.defense);
+    if (mm.defense || mm.height || mm.img || mm.speed || mm.weight) {
+      console.log("errors", errors);
       return alert("debe de agregar cada valor!!");
     } else {
       dispatch(postPokemon(input));
+      alert("pokemon creado!!");
     }
-    alert("pokemon creado!!");
+
     setInput({
       name: "",
       life: "",
@@ -93,7 +98,7 @@ export default function CreateForm(params) {
   //-------------
   let alfabetico = /^[a-z]+$/;
   let numerico = /^[0-9]+$/;
-  const url = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
+  const url = /^(ftp|http|https):\/\/[^ "]+$/;
   function handleValidacion(input) {
     let errors = {};
     //1
@@ -201,7 +206,7 @@ export default function CreateForm(params) {
             onChange={(e) => handleOnChange(e)}
           />
         </div>
-        <p>{errors.life && <p>{errors.life}</p>}</p>
+        {errors.life && <p>{errors.life}</p>}
         <div>
           <label htmlFor="">Ataque:</label>
           <input
@@ -212,7 +217,7 @@ export default function CreateForm(params) {
             onChange={(e) => handleOnChange(e)}
           />
         </div>
-        <p>{errors.attack && <p>{errors.attack}</p>}</p>
+        {errors.attack && <p>{errors.attack}</p>}
 
         <div>
           <label htmlFor="">Defensa:</label>
@@ -224,7 +229,7 @@ export default function CreateForm(params) {
             onChange={(e) => handleOnChange(e)}
           />
         </div>
-        <p>{errors.defense && <p>{errors.defense}</p>}</p>
+        {errors.defense && <p>{errors.defense}</p>}
 
         <p></p>
         <div>
@@ -237,7 +242,7 @@ export default function CreateForm(params) {
             onChange={(e) => handleOnChange(e)}
           />
         </div>
-        <p>{errors.speed && <p>{errors.speed}</p>}</p>
+        {errors.speed && <p>{errors.speed}</p>}
 
         <p></p>
         <div>
@@ -250,7 +255,7 @@ export default function CreateForm(params) {
             onChange={(e) => handleOnChange(e)}
           />
         </div>
-        <p>{errors.height && <p>{errors.height}</p>}</p>
+        {errors.height && <p>{errors.height}</p>}
 
         <p></p>
         <div>
@@ -263,7 +268,7 @@ export default function CreateForm(params) {
             onChange={(e) => handleOnChange(e)}
           />
         </div>
-        <p>{errors.weight && <p>{errors.weight}</p>}</p>
+        {errors.weight && <p>{errors.weight}</p>}
 
         <p></p>
         <div>
@@ -276,42 +281,9 @@ export default function CreateForm(params) {
             onChange={(e) => handleOnChange(e)}
           />
         </div>
-        <p>{errors.img && <p>{errors.img}</p>}</p>
+        {errors.img && <p>{errors.img}</p>}
 
         <p></p>
-        <div>
-          <label htmlFor="">Typo:</label>
-
-          <label htmlFor="">
-            <input
-              type="checkbox"
-              name="fire"
-              value="fire"
-              onChange={(e) => handleOnCheckBox(e)}
-            />
-            Fire
-          </label>
-
-          <label htmlFor="">
-            <input
-              type="checkbox"
-              name="poison"
-              value="poison"
-              onChange={(e) => handleOnCheckBox(e)}
-            />
-            poison
-          </label>
-
-          <label htmlFor="">
-            <input
-              type="checkbox"
-              name="unknown"
-              value="unknown"
-              onChange={(e) => handleOnCheckBox(e)}
-            />
-            unknown
-          </label>
-        </div>
 
         <select name="" id="" onChange={(e) => handleOnOptionsSelect(e)}>
           {types.map((el) => (

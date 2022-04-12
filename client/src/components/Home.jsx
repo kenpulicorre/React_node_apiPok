@@ -107,21 +107,29 @@ export default function Home(params) {
     return <Loader />;
   }
   return (
-    <div>
+    <div className={estilos.contenedor}>
+      <h1 className={estilos.title}>¡MANIFIESTA TU POKEMON!</h1>
       <div className={estilos.selector}>
-        <Link to="/pokemon" className={estilos.crear_poke}>
-          Crea tu Pokemon
-        </Link>
+        <p className={estilos.selector2}>
+          <Link to="/pokemon" className={estilos.crear_poke}>
+            Crea tu Pokemon
+          </Link>
 
-        <button onClick={(e) => handleClick(e)} className={estilos.crear_poke}>
-          Recargar pokemons
-        </button>
+          <button
+            onClick={(e) => handleClick(e)}
+            className={estilos.crear_poke}
+          >
+            Recargar pokemons
+          </button>
+        </p>
+        {/* lalmado componente search */}
+        <p>
+          <SearchBar />
+        </p>
       </div>
 
-      <h1>¡MANIFIESTA TU POKEMON!</h1>
-
       {/* filtros------------------------- */}
-      <div>
+      <div className={estilos.Contenedor_filtro}>
         {/* ascendentemente como descendentemente */}
         <select
           name=""
@@ -196,8 +204,7 @@ export default function Home(params) {
           allPokemons={allPokemons.length}
           setPaginado={setPaginado}
         />
-        {/* lalmado componente search */}
-        <SearchBar />
+
         {/* <CreateForm /> */}
         {/* llamando al componente card----- */}
         {pokesToPage?.map((el) => {

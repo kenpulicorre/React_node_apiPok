@@ -1,0 +1,35 @@
+.container {
+  margin-left: 100px;
+  display: inline-flex;
+  font-size: 10px;
+}
+.search {
+  height: 30px;
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(235, 27, 27, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.button {
+  color: rgb(255, 255, 255);
+  margin: auto;
+  margin-top: 0px;
+  margin-left: 10px;
+  font-size: 19px;
+  padding: 3px 10px;
+  background: radial-gradient(
+    circle,
+    rgb(190, 25, 39) 100%,
+    rgb(190, 25, 25) 100%
+  );
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: 0.3s;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
