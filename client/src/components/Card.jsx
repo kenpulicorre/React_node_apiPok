@@ -22,24 +22,6 @@ export default function Card({ id, name, image, type, inDb }) {
         height="250px"
       />
       <h2>{name}</h2>
-
-      {/* {inDb
-        ? type.map((t) => (
-
-            <p>
-              <span key={t.id}>
-                {t.name} {"   "}
-              </span>
-            </p>
-          ))
-        : type.map((t) => (
-            <p>
-              <span >
-                {t} {"   "}
-              </span>
-            </p>
-          ))} */}
-
       <p>
         <span>
           {x.map((t) => (

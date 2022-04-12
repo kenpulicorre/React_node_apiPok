@@ -30,8 +30,11 @@ export default function DetailPoke(props) {
   console.log(x);
   return (
     <div>
-      <h1 className={estilos.container0}>imagen</h1>
+      <h1 className={estilos.container0}></h1>
       <div>
+        <Link to="/home">
+          <button className={estilos.boton}>VOLVER</button>
+        </Link>
         {pokemonDetalle.length > 0 ? (
           <div className={estilos.container}>
             <h1 className={estilos.name}>
@@ -70,7 +73,7 @@ export default function DetailPoke(props) {
         )}
         <p></p>
         <Link to="/home">
-          <button>VOLVER</button>
+          <button className={estilos.boton}>VOLVER</button>
         </Link>
       </div>
     </div>

@@ -3,13 +3,14 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { connect, useDispatch, useSelector } from "react-redux";
-import estilos from "./Home.module.css";
+import estilos from "./CreateForm.module.css";
 //acciones
 import { postPokemon, getTypes } from "../actions/index.js";
 
 //componentes
 import Card from "./Card";
 import SearchBar from "./SearchBar";
+
 //-----------------------------------------
 export default function CreateForm(params) {
   const dispatch = useDispatch();
@@ -92,9 +93,7 @@ export default function CreateForm(params) {
     });
     // antes.push("/home");
   }
-
   //-------------
-
   //-------------
   let alfabetico = /^[a-z]+$/;
   let numerico = /^[0-9]+$/;
@@ -174,14 +173,15 @@ export default function CreateForm(params) {
   return (
     <div>
       <Link to="/home">
-        <button>Volver</button>
+        <button className={estilos.boton}>VOLVER</button>
       </Link>
-      <h1>Crea pokemon</h1>
+      <h1 className={estilos.title}>Crea pokemon</h1>
       <form
         action=""
         onSubmit={(e) => {
           return handleSubmit(e);
         }}
+        className={estilos.formulario}
       >
         <div>
           <label htmlFor="">Nombre:</label>
@@ -192,10 +192,12 @@ export default function CreateForm(params) {
             placeholder=" Nombre..."
             onChange={(e) => handleOnChange(e)}
           />
+          <label htmlFor="" className={estilos.error}>
+            {errors.name && <p>{errors.name}</p>}
+          </label>
         </div>
         {/* <p>{errors.name}</p> */}
 
-        {errors.name && <p>{errors.name}</p>}
         <div>
           <label htmlFor="">Vida:</label>
           <input
@@ -205,8 +207,11 @@ export default function CreateForm(params) {
             placeholder="Vida..."
             onChange={(e) => handleOnChange(e)}
           />
+          <label htmlFor="" className={estilos.error}>
+            {errors.life && <p>{errors.life}</p>}
+          </label>
         </div>
-        {errors.life && <p>{errors.life}</p>}
+
         <div>
           <label htmlFor="">Ataque:</label>
           <input
@@ -216,8 +221,10 @@ export default function CreateForm(params) {
             placeholder="Ataque..."
             onChange={(e) => handleOnChange(e)}
           />
+          <label htmlFor="" className={estilos.error}>
+            {errors.attack && <p>{errors.attack}</p>}
+          </label>
         </div>
-        {errors.attack && <p>{errors.attack}</p>}
 
         <div>
           <label htmlFor="">Defensa:</label>
@@ -228,10 +235,11 @@ export default function CreateForm(params) {
             placeholder="Defensa.."
             onChange={(e) => handleOnChange(e)}
           />
+          <label htmlFor="" className={estilos.error}>
+            {errors.defense && <p>{errors.defense}</p>}
+          </label>
         </div>
-        {errors.defense && <p>{errors.defense}</p>}
 
-        <p></p>
         <div>
           <label htmlFor="">Velocidad:</label>
           <input
@@ -241,10 +249,11 @@ export default function CreateForm(params) {
             placeholder="Velocidad..."
             onChange={(e) => handleOnChange(e)}
           />
+          <label htmlFor="" className={estilos.error}>
+            {errors.speed && <p>{errors.speed}</p>}
+          </label>
         </div>
-        {errors.speed && <p>{errors.speed}</p>}
 
-        <p></p>
         <div>
           <label htmlFor="">Altura:</label>
           <input
@@ -254,57 +263,76 @@ export default function CreateForm(params) {
             placeholder="Altura..."
             onChange={(e) => handleOnChange(e)}
           />
-        </div>
-        {errors.height && <p>{errors.height}</p>}
 
-        <p></p>
+          <label htmlFor="" className={estilos.error}>
+            {errors.height && <p>{errors.height}</p>}
+          </label>
+        </div>
+
         <div>
           <label htmlFor="">Peso:</label>
           <input
+            className={estilos.fijo}
             type="text"
             value={input.weight}
             name="weight"
             placeholder="Peso..."
             onChange={(e) => handleOnChange(e)}
           />
+          <label htmlFor="" className={estilos.error}>
+            {errors.weight && <p>{errors.weight}</p>}
+          </label>
         </div>
-        {errors.weight && <p>{errors.weight}</p>}
 
-        <p></p>
         <div>
           <label htmlFor="">Imagen:</label>
           <input
+            className={estilos.fijo}
             type="text"
             value={input.img}
             name="img"
             placeholder="Ruta de imagen.."
             onChange={(e) => handleOnChange(e)}
           />
+          <label htmlFor="" className={estilos.error}>
+            {errors.img && <p>{errors.img}</p>}
+          </label>
         </div>
-        {errors.img && <p>{errors.img}</p>}
 
-        <p></p>
-
-        <select name="" id="" onChange={(e) => handleOnOptionsSelect(e)}>
-          {types.map((el) => (
-            <option key={el.id} value={el.name}>
-              {el.name}
-            </option>
-          ))}
-        </select>
-
-        <ul>
+        <div className={estilos.selectTipo}>
+          <label className={estilos.selectTypes__text}>Tipo</label>
+          <select name="" id="" onChange={(e) => handleOnOptionsSelect(e)}>
+            {types.map((el) => (
+              <option key={el.id} value={el.name}>
+                {el.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        {/* <ul>
           <li>{input.types.map((el) => el + ",")}</li>
-        </ul>
-
-        <button type="submit">Crear pokemon</button>
-      </form>
-      {input.types.map((el) => (
-        <div key={el}>
-          <p>{el}</p>
-          <button onClick={() => handleDelete(el)}>x</button>
+        </ul> */}
+        <div className={estilos.formulariotypo}>
+          {input.types.map((el) => (
+            <div key={el}>
+              {/* <p>{el}</p> */}
+              <button
+                type="button"
+                onClick={() => handleDelete(el)}
+                className={estilos.fuente}
+              >
+                x
+              </button>
+              <span>{el}</span>
+            </div>
+          ))}
         </div>
-      ))}
+
+        <button type="submit" className={estilos.boton}>
+          {" "}
+          Crear pokemon
+        </button>
+      </form>
     </div>
   );
 }

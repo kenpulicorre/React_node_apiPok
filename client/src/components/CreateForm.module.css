@@ -1,0 +1,67 @@
+.formulario {
+  margin-right: 100px;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 400px;
+  height: 100hv;
+  color: rgb(0, 0, 0);
+  font-size: large;
+  font-weight: 800;
+}
+.selectTipo {
+  margin-top: 10px;
+  align-self: center;
+}
+.selectTypes__text {
+  font-size: 20px;
+}
+.title {
+  font-size: 50px;
+}
+
+.boton {
+  color: rgb(255, 255, 255);
+
+  margin-top: 10px;
+  margin-left: 0px;
+  font-size: 19px;
+  padding: 3px 10px;
+  background: radial-gradient(
+    circle,
+    rgb(190, 25, 39) 100%,
+    rgb(190, 25, 25) 100%
+  );
+  border-radius: 15px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  transition: 0.3s;
+}
+
+.boton:hover {
+  transform: scale(1.1);
+}
+
+.formulariotypo {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: antiquewhite;
+  display: inline-flex;
+  position: center;
+  align-items: flex-end;
+}
+
+.fuente {
+  color: aliceblue;
+  background-color: black;
+}
+.error {
+  color: rgb(233, 217, 217);
+
+  letter-spacing: 1px;
+}
+
+.fijo {
+  position: relative;
+}

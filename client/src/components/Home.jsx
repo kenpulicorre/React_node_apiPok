@@ -207,22 +207,24 @@ export default function Home(params) {
 
         {/* <CreateForm /> */}
         {/* llamando al componente card----- */}
-        {pokesToPage?.map((el) => {
-          return (
-            <Fragment key={el.id}>
-              <Link to={"/home/" + el.id}>
-                <Card
-                  // key={el.id}
-                  id={el.id}
-                  name={el.name}
-                  image={el.img}
-                  type={el.types}
-                  inDb={el.inDb ? el.inDb : false}
-                />
-              </Link>
-            </Fragment>
-          );
-        })}
+        <div className={estilos.contenedor_pokes}>
+          {pokesToPage?.map((el) => {
+            return (
+              <Fragment key={el.id}>
+                <Link to={"/home/" + el.id} className={estilos.contenedor_1pke}>
+                  <Card
+                    // key={el.id}
+                    id={el.id}
+                    name={el.name}
+                    image={el.img}
+                    type={el.types}
+                    inDb={el.inDb ? el.inDb : false}
+                  />
+                </Link>
+              </Fragment>
+            );
+          })}
+        </div>
         {/* llamando al componente card----- */}
       </div>
     </div>
