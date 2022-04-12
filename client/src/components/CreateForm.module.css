@@ -1,24 +1,36 @@
 .formulario {
-  margin-right: 100px;
+  margin-left: 30px;
+  margin-right: 30px;
+  right: 100px;
+  padding-left: 10px;
+  padding-right: 25px;
+  padding-bottom: 25px;
   background-color: rgba(0, 0, 0, 0.5);
   display: inline-flex;
   flex-direction: column;
   align-items: flex-end;
-  width: 400px;
+  width: 500px;
   height: 100hv;
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-size: large;
-  font-weight: 800;
+  font-weight: 400;
+
+  border-radius: 50px;
+  border-left: 50;
 }
 .selectTipo {
   margin-top: 10px;
-  align-self: center;
+  margin-bottom: 10px;
+  margin-left: 0px;
+  align-self: left;
+}
+.selecttiposelec {
+  margin-bottom: 10px;
+  margin-left: 10px;
+  align-self: left;
 }
 .selectTypes__text {
   font-size: 20px;
-}
-.title {
-  font-size: 50px;
 }
 
 .boton {
@@ -48,8 +60,11 @@
   background-color: rgba(0, 0, 0, 0.5);
   color: antiquewhite;
   display: inline-flex;
+
   position: center;
   align-items: flex-end;
+  align-items: flex-end;
+  padding: 1px;
 }
 
 .fuente {
@@ -64,4 +79,19 @@
 
 .fijo {
   position: relative;
+}
+
+.typocontainer {
+  margin-bottom: 10px;
+}
+.title {
+  margin-top: 0px;
+  margin-bottom: 100px;
+  position: relative;
+  top: 40px;
+
+  font-size: 50px;
+  color: rgb(76, 78, 192);
+  text-shadow: 5px 5px 1px rgb(32, 18, 18);
+  font-size: 3em;
 }
