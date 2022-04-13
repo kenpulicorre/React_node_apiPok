@@ -21,6 +21,7 @@ export default function CreateForm(params) {
     dispatch(getTypes());
     console.log("entrada", input.name);
   }, []);
+
   //---
   const [errors, setErrors] = useState({});
   const [input, setInput] = useState({
@@ -35,7 +36,9 @@ export default function CreateForm(params) {
     types: [],
     // inDb: "",
   });
-
+  useEffect(() => {
+    setErrors(handleValidacion({ ...input, ["types"]: input.types }));
+  }, [input]);
   //-----logica-----
   //--------------handleOnChange
   function handleOnChange(e) {
@@ -197,13 +200,14 @@ export default function CreateForm(params) {
                       if (!url.test(input.img) && input.img !== "") {
                         errors.img =
                           "Solo se permite un Url valido o dejar vacio este elemento";
-                      } else {
-                        //10---types
-                        console.log("tipo en el--- ", input.types.length);
-                        if (input.types.length === 0) {
-                          errors.types = `al menos un tipo`;
-                        }
                       }
+                      //else {
+                      //10---types
+                      // console.log("tipo en el--- ", input.types.length);
+                      // if (input.types.length === 0) {
+                      //   errors.types = `al menos un tipo`;
+                      // }
+                      //}
                     }
                   }
                 }
