@@ -69,6 +69,8 @@ export default function CreateForm(params) {
     setInput({
       ...input,
       ["types"]: [...input.types, e.target.value],
+      //types: [...input.types, e.target.value],
+      //
     });
     setErrors(handleValidacion({ ...input, [e.target.name]: e.target.value }));
   };

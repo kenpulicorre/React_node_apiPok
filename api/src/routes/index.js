@@ -124,6 +124,7 @@ const getDbInfoPokemon = async () => {
 const getAllInfoPokemon = async () => {
   const apiPoke = await getApiInfoPokemon();
   const dbPoke = await getDbInfoPokemon();
+
   const totalPoke = apiPoke.concat(dbPoke);
   return totalPoke;
 };
@@ -152,7 +153,18 @@ router.get("/pokemons", async (req, res) => {
 //--------.get("/pokemon/id"--------
 router.get("/pokemons/:id", async (req, res) => {
   const { id } = req.params;
+
   let pokeTotal = await getAllInfoPokemon();
+  // if (id.includes("-")) {
+  //   let pokeapi = await Pokemon.findOne({
+  //     where: { id: id },
+  //   });
+  //   res.status(200).json(pokeapi);
+  // } else {
+  //   let pokeapi = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  //   res.status(200).json(pokeapi);
+  // }
+
   if (id) {
     let pokeId = await pokeTotal.filter((el) => el.id == id);
     console.log("id", id);
@@ -192,8 +204,11 @@ router.post("/pokemons", async (req, res) => {
     inDb,
   });
   //-----
+  console.log("types--------", types);
   let typeDb = await Type.findAll({
+    // where: { name: ["fire", "flying"] },
     where: { name: types },
+    attributes: { exclude: ["createdAt", "updatedAt"] },
   });
   //-----
   //-----ruptur
@@ -207,8 +222,11 @@ router.post("/pokemons", async (req, res) => {
   // if (typeDb.length === 0) {
   //   res.send("el typo no exieste, ");
   // } else {
-  console.log(typeDb);
+  console.log("typeDb--------------", typeDb);
   newPokemon.addType(typeDb);
+  // newPokemon.addType(types);
+
+  console.log("nuevo pokemon creado", newPokemon);
   res.send("pokemon creado correctmente");
   // }
 
